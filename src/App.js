@@ -22,12 +22,12 @@ function App() {
 
   return (
     <div className="App">
-      <Card variant="outlined">
-        <img src={doggo}></img>
-        <Button variant="contained" onClick={fetchData}>
+      <Card sx={{"width": "90vw", "display": "flex", "flexDirection" : "column", "alignItems" : "center", "paddingTop" : "2rem", "paddingBottom" : "2rem"}}>
+        <img src={doggo}/>
+      </Card>
+      <Button sx={{"marginTop": "3vh"}} variant="contained" onClick={fetchData}>
           Next Doggo
         </Button>
-      </Card>
     </div>
   );
 }
