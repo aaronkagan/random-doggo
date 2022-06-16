@@ -4,7 +4,9 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
-import { AppBar, CardContent, CardMedia } from "@mui/material";
+import { AppBar, Avatar, CardContent, CardMedia } from "@mui/material";
+import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
+
 import Container from "@mui/material/Container";
 
 function App() {
@@ -45,9 +47,35 @@ function App() {
           alignItems: "center",
         }}
       >
-        <Typography align="center" variant="h5" gutterBottom={true}>
-          Doggo Randomizer
-        </Typography>
+        <AppBar
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
+          }}
+        >
+          {/* <Toolbar sx={{ display: "flex", justifyContent: "spaceBetween" }}> */}
+
+          <Typography variant="h5" sx={{ marginLeft: "1rem" }}>
+            Doggo Randomizer
+          </Typography>
+          {/* <Box sx={{ width: "20vw" }} /> */}
+          <a
+            href="https://www.linkedin.com/in/aaron-kagan/"
+            target="_blank"
+            sx={{ marginRight: "0" }}
+          >
+            <Avatar
+              alt="Aaron Kagan"
+              src={require("./assets/images/me.jpeg")}
+              sx={{ marginRight: "1rem" }}
+            />
+          </a>
+          {/* </Toolbar> */}
+        </AppBar>
 
         <Card
           sx={{
@@ -59,16 +87,19 @@ function App() {
             alignItems: "center",
             paddingTop: "2rem",
             paddingBottom: "2rem",
+            marginTop: "5rem",
           }}
         >
           {isLoading ? (
-            <CardMedia
-              component="img"
-              alt="doggo"
-              image={doggo}
-              height="300"
-              sx={{ width: "300px", objectFit: "cover" }}
-            />
+            <>
+              <CardMedia
+                component="img"
+                alt="doggo"
+                image={doggo}
+                height="300"
+                sx={{ width: "300px", objectFit: "cover" }}
+              />
+            </>
           ) : (
             <Skeleton
               variant="rectangle"
@@ -89,6 +120,7 @@ function App() {
         <Button
           sx={{ marginTop: "3vh" }}
           variant="contained"
+          startIcon={<PetsOutlinedIcon />}
           onClick={() => {
             fetchDoggoPic();
             fetchDoggoFact();
