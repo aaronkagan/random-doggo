@@ -2,7 +2,3 @@
   from = "/"
   to = "https://dog-api.kinduff.com/api/facts""
   status = 200
- 
- # These are optional
-  force = true
-  headers = {X-From = "Netlify"}
