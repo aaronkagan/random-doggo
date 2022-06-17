@@ -68,6 +68,7 @@ function App() {
           <a
             href="https://www.linkedin.com/in/aaron-kagan/"
             target="_blank"
+            rel="noreferrer"
             sx={{ marginRight: "0" }}
           >
             <Avatar
