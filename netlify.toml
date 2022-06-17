@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/"
-  to = "https://dog-api.kinduff.com/api/facts""
-  status = 200
