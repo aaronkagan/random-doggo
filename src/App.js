@@ -1,5 +1,6 @@
 import "./assets/stylesheets/App.css";
 import { useEffect, useState } from "react";
+import getRandomFact from "./functions/getRandomFact";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
@@ -26,11 +27,12 @@ function App() {
   };
 
   const fetchDoggoFact = () => {
-    fetch("https://dog-api.kinduff.com/api/facts")
-      .then((response) => response.json())
-      .then((data) => {
-        setDoggoFact(data["facts"][0]);
-      });
+    setDoggoFact(getRandomFact());
+    // fetch("https://dog-api.kinduff.com/api/facts")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setDoggoFact(data["facts"][0]);
+    //   });
   };
 
   useEffect(() => {
