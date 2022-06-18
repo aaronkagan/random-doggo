@@ -10,7 +10,31 @@ import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
 
 import Container from "@mui/material/Container";
 
+// Modal
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "300px",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+// END Modal
+
 function App() {
+  // Modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  // END Modal
+
   const [doggo, setDoggo] = useState(null);
   const [doggoFact, setDoggoFact] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +85,13 @@ function App() {
         >
           {/* <Toolbar sx={{ display: "flex", justifyContent: "spaceBetween" }}> */}
 
-          <Typography variant="h5" sx={{ marginLeft: "1rem" }}>
+          <Typography
+            variant="h5"
+            sx={{
+              marginLeft: "1rem",
+              fontFamily: "'Kdam Thmor Pro', sans-serif;",
+            }}
+          >
             Doggo Randomizer
           </Typography>
           {/* <Box sx={{ width: "20vw" }} /> */}
@@ -101,6 +131,7 @@ function App() {
                 image={doggo}
                 height="300"
                 sx={{ width: "300px", objectFit: "cover" }}
+                onClick={handleOpen}
               />
             </>
           ) : (
@@ -109,10 +140,16 @@ function App() {
               animation="wave"
               height={300}
               width={300}
+              onClick={handleOpen}
             />
           )}
           <CardContent sx={{ maxWidth: "300px" }}>
-            <Typography align="center" variant="h5" gutterBottom={true}>
+            <Typography
+              align="center"
+              variant="h5"
+              gutterBottom={true}
+              sx={{ fontFamily: "'Kdam Thmor Pro', sans-serif;" }}
+            >
               Fun Doggo Fact
             </Typography>
             <Typography align="center" variant="body1">
@@ -120,8 +157,41 @@ function App() {
             </Typography>
           </CardContent>
         </Card>
+        <div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              {isLoading ? (
+                <>
+                  <CardMedia
+                    component="img"
+                    alt="doggo"
+                    image={doggo}
+                    height="300"
+                    sx={{ width: "300px", objectFit: "cover" }}
+                  />
+                </>
+              ) : (
+                <Skeleton
+                  variant="rectangle"
+                  animation="wave"
+                  height={300}
+                  width={300}
+                />
+              )}
+            </Box>
+          </Modal>
+        </div>
+
         <Button
-          sx={{ marginTop: "3vh" }}
+          sx={{
+            marginTop: "3vh",
+            fontFamily: "'Kdam Thmor Pro', sans-serif;",
+          }}
           variant="contained"
           startIcon={<PetsOutlinedIcon />}
           onClick={() => {
